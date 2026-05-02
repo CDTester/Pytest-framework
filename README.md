@@ -39,7 +39,7 @@ Or you can run tests by keyword expressions:
 ```bash
 pytest -k "mock and not weather"
 ```
-This will run [test_db_sqlite_mock.py](tests\unit\test_db_sqlite_mock.py) but not [test_mockWeather.py](tests\unit\test_mockWeather.py).
+This will run [test_db_sqlite_mock.py](./tests/unit/test_db_sqlite_mock.py) but not [test_mockWeather.py](./tests/unit/test_mockWeather.py).
 
 > [!NOTE]
 > Keywords require "double quotes" on Windows, 'single quotes' on Linux.
