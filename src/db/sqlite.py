@@ -14,7 +14,7 @@ def create_users_table():
   conn.commit()
   conn.close()
 
-def add_user(name, age):
+def add_user(name: str, age: int):
   """Adds a new user to the users table."""
   conn = sqlite3.connect('users.db')
   cursor = conn.cursor()
@@ -22,4 +22,3 @@ def add_user(name, age):
   conn.commit()
   conn.close()
 
-  
