@@ -1,3 +1,4 @@
+"""Unit tests for the SQLite database functions using mocking."""
 from db.sqlite import add_user
 
 # mock a connection to the SQLite database for testing
@@ -9,4 +10,7 @@ def test_add_user(mocker):
   add_user("John Doe", 30)
   # Verify that the correct SQL query was executed
   mock_connection.assert_called_once_with('users.db')
-  mock_cursor.execute.assert_called_once_with('INSERT INTO users (name, age) VALUES (?, ?)', ("John Doe", 30))
+  mock_cursor.execute.assert_called_once_with(
+    'INSERT INTO users (name, age) VALUES (?, ?)', 
+    ("John Doe", 30)
+  )

@@ -1,3 +1,4 @@
+"""Unit tests for the UserManager class in UserManager.py using pytest fixtures."""
 import pytest
 from UserManager import UserManager
 
@@ -9,7 +10,7 @@ def user_manager() -> UserManager:
 
 def test_add_user(user_manager: UserManager):
   """Tests adding a new user."""
-  assert user_manager.add_user("alice", "alice@example.com") == True
+  assert user_manager.add_user("alice", "alice@example.com") is True
   assert user_manager.get_user("alice") == "alice@example.com"
 
 def test_add_existing_user(user_manager: UserManager):

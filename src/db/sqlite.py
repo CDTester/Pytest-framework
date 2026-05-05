@@ -1,3 +1,4 @@
+"""Documentation for the sqlite module."""
 import sqlite3
 
 def create_users_table():
@@ -21,4 +22,3 @@ def add_user(name: str, age: int):
   cursor.execute('INSERT INTO users (name, age) VALUES (?, ?)', (name, age))
   conn.commit()
   conn.close()
-
