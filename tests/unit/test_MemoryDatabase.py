@@ -1,6 +1,6 @@
 """Unit tests for the MemoryDatabase class."""
 import pytest
-from MemoryDatabase import MemoryDatabase
+from src.MemoryDatabase import MemoryDatabase
 
 
 # Instead of returning s new instance, we use yield to provide the fixture value to the test

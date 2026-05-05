@@ -1,6 +1,6 @@
 """Unit tests for the UserManager class in UserManager.py using pytest fixtures."""
 import pytest
-from UserManager import UserManager
+from src.UserManager import UserManager
 
 # fixture to create a fresh UserManager instance for each test
 @pytest.fixture

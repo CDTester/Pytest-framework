@@ -1,6 +1,6 @@
 """Unit tests for the get_weather function in mockWeather.py using mocking."""
 # import pytest
-from mockWeather import get_weather
+from src.mockWeather import get_weather
 
 def test_get_weather(mocker):
   """Tests the get_weather function with a mocked API response."""

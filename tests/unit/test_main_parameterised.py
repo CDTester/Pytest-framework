@@ -1,6 +1,6 @@
 """Parameterised Unit tests for the is_prime function in main.py."""
 import pytest
-from main import is_prime
+from src.main import is_prime
 
 # pytest.mark.paramaterize uses a list of tuples to specify multiple sets of
 # input and expected output for the test function.

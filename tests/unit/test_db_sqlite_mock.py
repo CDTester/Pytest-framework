@@ -1,5 +1,5 @@
 """Unit tests for the SQLite database functions using mocking."""
-from db.sqlite import add_user
+from src.db.sqlite import add_user
 
 # mock a connection to the SQLite database for testing
 def test_add_user(mocker):
