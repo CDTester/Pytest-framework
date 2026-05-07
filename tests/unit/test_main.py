@@ -34,3 +34,14 @@ def test_approx():
   you can use pytest.approx() to compare floating-point values that may have small rounding errors:
   """
   assert (0.1 + 0.2) == pytest.approx(0.3)
+
+@timer
+def test_subtests(subtests):
+  """Subtests are an alternative to parametrization, 
+  particularly useful when the exact parametrization values are not known at collection time.
+  """
+  test_cases = [(1, 2, 3), (2, 3, 5), (3, 4, 7)]
+  for a, b, expected in test_cases:
+    with subtests.test(a=a, b=b):
+      print(f"Testing subtest: add({a}, {b}) = {expected}")
+      assert add(a, b) == expected

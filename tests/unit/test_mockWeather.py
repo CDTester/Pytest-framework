@@ -5,7 +5,7 @@ from src.mockWeather import get_weather
 def test_get_weather(mocker):
   """Tests the get_weather function with a mocked API response."""
   # Mock the requests.get method to return a fake response
-  mock_get = mocker.patch('mockWeather.requests.get')
+  mock_get = mocker.patch('src.mockWeather.requests.get')
 
   # set return values for the mock
   mock_get.return_value.status_code = 200
@@ -18,4 +18,4 @@ def test_get_weather(mocker):
   )
 
   # Verify that the mock was called with the correct URL
-  mock_get.assert_called_once_with("https://api.weather.com/v1/Dubai")
+  mock_get.assert_called_once_with("https://api.weather.com/v1/Dubai", timeout=5)
