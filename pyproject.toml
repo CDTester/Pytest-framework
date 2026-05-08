@@ -5,6 +5,18 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "my-project"
 version = "0.1.0"
+dependencies = [
+  "pytest",
+  "pytest-mock",
+  "pytest-bdd",
+  "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pylint",
+    "pytest-cov"
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

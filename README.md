@@ -6,13 +6,7 @@ Python, Pytest, db
 Install PyTest and PyTest-Mock.
 Install Requests for API requests
 
-```bash
-pip install pytest
-pip install pytest-mock
-pip install requests
-```
-
-Then install the project from `pyproject.toml`
+Install the project from `pyproject.toml`
 ```bash
 pip install -e .
 ```
@@ -67,13 +61,70 @@ pytest -m smoke
 
 Vebose test results output can be set by using:
 ```bash
-pytest -v
+pytest -v   # verbose, displays test names
+pytest -vv  # more verbose
+pytest -vvv # very verbose
 ```
 
-## Debugging Tests
+### Debugging Tests
 By default, pytest supresses stdout and stderr messages to keep the output clean. If you want to debug tests with print() statements then the tests will need to be run using:
 ```bash
 pytest -s
+```
+or
+```bash
+pytest -rA
+```
+will report all tests with their print statements, this shows you what test produced the print statement.
+
+other options are:
+- -rf, failed
+- -rE, error
+- -rs, skipped
+- -rx, xfailed
+- -rX, xpassed
+- -rp, passed
+- -rP, passed with output
+- -ra, all except passed
+- -rA, all
+
+Tests can be executed in a manner that allows you to fix them during the test execution using stepwise:
+```bash
+pytest --sw
+```
+The test suite will run until the first failure and then stop. At the next invocation, tests will continue from the last failing test and then run until the next failing test. 
+
+Alternatively, you can use the python debugger:
+```bash
+pytest --pdb
+```
+
+### Re-Running tests
+Tests that failed in the last run can be re-run using the following options:
+
+```bash
+pytest --lf # Re-runs the last failed tests
+```
+
+
+or
+```bash
+pytest --ff ## Re-runs the failures first, then runs the rest of the tests that previously passed
+```
+
+or 
+```bash
+pytest --nf # Runs new/updated tests first, then all the other tests. Organised by modified time.
+```
+
+The failed tests can be found in the cache using the following option:
+```bash
+pytest --cache-show
+```
+
+This cache can be cleared (recommended for CI servers) using:
+```bash
+pytest --cache-clear
 ```
 
 
@@ -123,4 +174,26 @@ This will stop any warning messages when running
 ```bash
 pytest -m smoke
 ```
+
+## Reports
+
+### JUnit
+Pytest can create junit style test reports using:
+```bash
+pytest --junit-xml=/test_reports/junit.xml
+```
+This will create a file named `junit.xml` in the test_results folder. 
+
+The test suite name can be set in the `pytest.ini` file.
+```ini
+junit_suite_name = my_test_suite
+```
+
+
+## PyTest-BDD
+pytest-bdd implements a subset of the Gherkin language to enable automating project requirements testing and to facilitate behavioral driven development.
+
+Unlike many other BDD tools, it does not require a separate runner and benefits from the power and flexibility of pytest. It enables unifying unit and functional tests, reduces the burden of continuous integration server configuration and allows the reuse of test setups.
+
+Pytest fixtures written for unit tests can be reused for setup and actions mentioned in feature steps with dependency injection. This allows a true BDD just-enough specification of the requirements without maintaining any context object containing the side effects of Gherkin imperative declarations.
 

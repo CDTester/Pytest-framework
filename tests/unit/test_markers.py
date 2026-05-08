@@ -1,3 +1,4 @@
+import sys
 import pytest
 
 @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 54)])
@@ -8,6 +9,11 @@ def test_eval(test_input, expected):
 @pytest.mark.xfail(reason="This test is expected to fail because the expected value is incorrect.")
 def test_xfail():
   print("Testing: This is an expected failure.")
+  assert False, "This test should fail but is marked as xfail."
+
+@pytest.mark.xfail(sys.platform == "win32", reason="This test is expected to fail on Windows.")
+def test_xfail_on_windows():
+  print("Testing: This is expected to fail on Windows.")
   assert False, "This test should fail but is marked as xfail."
 
 
